@@ -1,9 +1,8 @@
 package main
 
-import (
-	"fmt"
-)
-
 func main() {
-	fmt.Println("hi")
+	var g Graph
+	n, edges := ReadEdges()
+	g.init(n, edges, true)
+	g.print()
 }
