@@ -1,6 +1,7 @@
 package main
 
 import (
+	"container/list"
 	"fmt"
 )
 
@@ -44,6 +45,27 @@ func ReadEdges() (n int, edges []*Edge) {
 	return n + 1, edges
 }
 
+func MockEdges() (n int, edges []*Edge) {
+	edges = []*Edge{
+		{0, 1, 4},
+		{0, 3, 8},
+		{1, 4, 1},
+		{1, 2, 2},
+		{4, 2, 3},
+		{2, 5, 3},
+		{3, 4, 2},
+	}
+	for _, e := range edges {
+		if e.a > n {
+			n = e.a
+		}
+		if e.b > n {
+			n = e.b
+		}
+	}
+	return n + 1, edges
+}
+
 func (g *Graph) init(n int, edges []*Edge, bi bool) {
 	*g = NewGraph(n)
 	for _, e := range edges {
@@ -64,4 +86,49 @@ func (g *Graph) print() {
 		}
 		fmt.Println()
 	}
+}
+
+func DFS(g *Graph, st int) {
+	f := make([]bool, g.n)
+	dFS(g, f, st, []int{-1}, -1)
+	fmt.Println()
+}
+
+func FindConnectedComponents(g *Graph) (r int, cpn []int) {
+	f := make([]bool, g.n)
+	cpn = make([]int, g.n)
+	for v := 0; v < g.n; v++ {
+		if !f[v] {
+			r++
+			dFS(g, f, v, cpn, r)
+		}
+	}
+	return r, cpn
+}
+
+func dFS(g *Graph, f []bool, v int, cpn []int, id int) {
+	if f[v] {
+		return
+	}
+	f[v] = true
+	cpn[v] = id
+	fmt.Print(v, "->")
+	for _, node := range g.adjOf[v] {
+		dFS(g, f, node.k, cpn, id)
+	}
+}
+
+func BFS(g *Graph, st int) {
+	f := make([]bool, g.n)
+	q := list.New()
+	bFS(g, f, q, st)
+}
+
+func bFS(g *Graph, f []bool, q *list.List, v int) {
+	if f[v] {
+		return
+	}
+	f[v] = true
+	fmt.Println(v)
+
 }

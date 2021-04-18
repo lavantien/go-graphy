@@ -32,38 +32,48 @@
    | Very simple structure                          |                                       |
 
 ## Common Graph Theory Problems
-   Is the graph directed or undirected?
-   Are the edges of the graph weighted?
-   Is the graph likely to be sparse or dense with edges?
+   Is the graph directed or undirected?  
+   Are the edges of the graph weighted?  
+   Is the graph likely to be sparse or dense with edges?  
    Which structure should I use in order to represent the graph efficiently?
    ### Shortest Path Problem
-   **Statement:** Given a weighted graph, find the shortest path of edges from node A to node B.
+   **Statement:** Given a weighted graph, find the shortest path of edges from node A to node B.  
    **Algorithms:** BFS (unweighted graph), Dijkstra's, Bellman-Ford, Floyd-Warshall, A*, ...
    ### Connectivity
-   **Statement:** Does there exist a path between node A and node B?
+   **Statement:** Does there exist a path between node A and node B?  
    **Typical solution:** Use union find data structure or any search algorithm (e.g DFS)
    ### Negative Cycles
-   **Statements:** Does my weighted directed graph have any negative cycles? If so, where?
+   **Statements:** Does my weighted directed graph have any negative cycles? If so, where?  
    **Algorithms:** Bellman-Ford and Floyd-Warshall
    ### Strongly Connected Components
-   **Statement:** SSCs can be thought of as self-contained cycles within a directed graph where every vertex in a given cycle can reach every other verteces in the same cycle.
+   **Statement:** SSCs can be thought of as self-contained cycles within a directed graph where every vertex in a given cycle can reach every other verteces in the same cycle.  
    **Algorithms:** Tarjan's and Kosaraju's algorithm
    ### Traveling Saleman Problem
-   **Statement:** Given a list of cities and the distances between each pair of cities, what is the shortest possible rout that visits each city exactly once and returns to the original city?
+   **Statement:** Given a list of cities and the distances between each pair of cities, what is the shortest possible rout that visits each city exactly once and returns to the original city?  
    **Algorithms:** Held-Karp, branch and bound, approximation algorithms (Ant Colony Optimization).
    ### Bridges and Articulation Points
-   **Statement:** A bridge / cut edge is any edge in a graph whose removal increases the number of connected components.
+   **Statement:** A bridge / cut edge is any edge in a graph whose removal increases the number of connected components.  
    Bridges are important in graph theory because they often hint at weak points, bottlenects or vulnerabilities in a graph.
    ### Minimum Spanning Tree
-   **Statement:** A MST is a subset of the edges of a connected weighted graph that connects all the vertices together, without any cycles and with the minimum possible total edge weight.
+   **Statement:** A MST is a subset of the edges of a connected weighted graph that connects all the vertices together, without any cycles and with the minimum possible total edge weight.  
    **Algorithms:** Kruskal's, Prim's & Boruvka's algorithm
    ### Network Flow: Max Flow
-   **Statement:** With an infinite input source how much "flow" can we push through the network?
-   Suppose the edges are roads with cars, pipes with water or hallways packed with people.
-   Flow represents the volume of water allowed to flow through the pipes, the number of cars the road can sustain in traffic and the maximum amount of people that can navigate through the hallways.
+   **Statement:** With an infinite input source how much "flow" can we push through the network?  
+   Suppose the edges are roads with cars, pipes with water or hallways packed with people.  
+   Flow represents the volume of water allowed to flow through the pipes, the number of cars the road can sustain in traffic and the maximum amount of people that can navigate through the hallways.  
    **Algorithms:** Ford-Fulkerson, Edmonds-Karp & Dinic's algorithm
 
 ## Go Implementations
    ### Graph Structure
    Representing graphs in the form of Adjacency List. Also handles initializing (from a Edge List) and outputing.
-   ### Depth First Search
+   ### Depth First Search and Connected Component
+   - Compute a graph's minimum spanning tree.
+   - Detect and find cycles in a graph.
+   - Check if a graph is bipartite.
+   - Find strongly connected components.
+   - Topologically sort the nodes of a graph.   
+   - Find bridges and articulation points.
+   - Find augmenting paths in a flow network.
+   - Generate mazes.
+   ### Breath First Search and Shortest Path
+   
